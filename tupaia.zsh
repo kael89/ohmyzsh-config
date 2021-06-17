@@ -3,6 +3,17 @@ alias mgu="yarn migrate"
 alias mgd="yarn migrate-down"
 alias mgdu="yarn migrate-down && yarn migrate"
 alias rdb="yarn dump-database $MEDITRAK_SSH_KEY && yarn refresh-database dump.sql"
+alias tcs="tup_workspace web-config-server"
+alias twf="tup_workspace web-frontend"
+
+function tup_workspace() {
+  workspace=$1
+  run "cd $TUPAIA_ROOT/tupaia/packages/$workspace"
+
+  if [[ $2 == "-s" ]]; then
+    run "yarn workspace @tupaia/$workspace start"
+  fi
+}
 
 function tup() {
   case $1 in
@@ -43,12 +54,13 @@ function tup_start() {
   case $1 in
   tupaia)
     cmd.exe /c \
-      "wt -w 0 split-pane -H -- wsl source ~/.zshrc\; \
-       cd $TUPAIA_ROOT/tupaia\; nvm -v\; \
+      "wt -w 0 wsl.exe . $NVM_DIR/nvm.sh\; \
+       cd $TUPAIA_ROOT/tupaia\; \
+       yarn workspace @tupaia/web-config-server start"
+    cmd.exe /c \
+      "wt -w 0 split-pane -H wsl.exe . $NVM_DIR/nvm.sh\; \
+       cd $TUPAIA_ROOT/tupaia\; \
        yarn workspace @tupaia/web-frontend start"
-    cd $TUPAIA_ROOT/tupaia
-    yarn workspace @tupaia/web-config-server start
-    shift
     ;;
   *)
     echo "Usage: tup start tupaia"
