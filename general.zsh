@@ -1,4 +1,4 @@
-source ~/.oh-my-zsh/custom/utils.sh
+source "$ZSH/custom/utils.sh"
 
 alias gacd="gatsby clean && gatsby develop"
 alias gad="gatsby develop"

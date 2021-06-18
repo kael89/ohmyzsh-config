@@ -1,3 +1,5 @@
+source "$ZSH/custom/utils.sh"
+
 alias ctup="cd $TUPAIA_ROOT/tupaia"
 alias mgu="yarn migrate"
 alias mgd="yarn migrate-down"
@@ -10,8 +12,13 @@ function tup_workspace() {
   workspace=$1
   run "cd $TUPAIA_ROOT/tupaia/packages/$workspace"
 
-  if [[ $2 == "-s" ]]; then
+  if [[ $2 == "" ]]; then
+    return
+  elif [[ $2 == "-s" ]]; then
     run "yarn workspace @tupaia/$workspace start"
+  else
+    shift
+    run "yarn workspace @tupaia/$workspace $*"
   fi
 }
 
