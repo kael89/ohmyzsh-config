@@ -3,7 +3,7 @@ alias mgu="yarn migrate"
 alias mgd="yarn migrate-down"
 alias mgdu="yarn migrate-down && yarn migrate"
 alias rdb="yarn dump-database $MEDITRAK_SSH_KEY && yarn refresh-database dump.sql"
-alias tcs="tup_workspace web-config-server"
+alias twc="tup_workspace web-config-server"
 alias twf="tup_workspace web-frontend"
 
 function tup_workspace() {
