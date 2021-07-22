@@ -1,10 +1,13 @@
 source "$ZSH/custom/utils.sh"
 
 alias ctup="cd $TUPAIA_ROOT/tupaia"
+alias ctup2="cd $TUPAIA_ROOT/tupaia2"
 alias mgu="yarn migrate"
 alias mgd="yarn migrate-down"
 alias mgdu="yarn migrate-down && yarn migrate"
 alias rdb="yarn dump-database $MEDITRAK_SSH_KEY && yarn refresh-database dump.sql"
+alias tap="tup_workspace admin-panel"
+alias tms="tup_workspace meditrak-server"
 alias twc="tup_workspace web-config-server"
 alias twf="tup_workspace web-frontend"
 
@@ -51,7 +54,7 @@ function tup_ssh() {
   fi
 
   sed -i.bak -e d ~/.ssh/known_hosts
-  local host=ubuntu@$server.tupaia.org
+  local host=ubuntu@$server-ssh.tupaia.org
   ssh -o StrictHostKeyChecking=no -i $MEDITRAK_SSH_KEY $host
 }
 
