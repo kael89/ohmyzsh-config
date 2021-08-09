@@ -7,16 +7,15 @@ alias mgd="yarn migrate-down"
 alias mgdu="yarn migrate-down && yarn migrate"
 alias tap="tup_workspace admin-panel"
 alias taps="tup_workspace admin-panel-server"
-alias tda="tup_workspace data-api"
 alias tes="tup_workspace entity-server"
 alias tms="tup_workspace meditrak-server"
 alias trs="tup_workspace report-server"
 alias twc="tup_workspace web-config-server"
 alias twf="tup_workspace web-frontend"
 
-# @param1: A path - can be a subpath of a tupaia project or not
-# @returns The root path for the specified tupaia project subpath.
-#   If the subpath is not under a tupaia project, defaults to "$TUPAIA_ROOT/tupaia"
+# @param1: A string which represent a tupaia project path
+# @returns The root path for the provided tupaia project, if valid;
+#   if not, it defaults to the "tupaia" project
 #
 # Examples
 # --------
@@ -25,19 +24,19 @@ alias twf="tup_workspace web-frontend"
 # $TUPAIA_ROOT/tupaia2/a/sub/path => $TUPAIA_ROOT/tupaia2
 # /non/tupaia/path => $TUPAIA_ROOT/tupaia
 function get_tupaia_project_root() {
-  local root_folder=$(echo $1 | sed -rn "s|.*$TUPAIA_ROOT/?([^/]*)/?.*|\1|p")
-  if [[ $root_folder == "" ]]; then
-    root_folder="tupaia"
+  local project_root=$(echo $1 | sed -rn "s|.*$TUPAIA_ROOT/([^/]*)/.*|\1|p")
+  if [[ root_folder == "" ]; then
+    project_root="tupaia"
   fi
 
-  echo "$TUPAIA_ROOT/$root_folder"
+  echo "$TUPAIA_ROOT/$projec_root"
 }
 
 function tup_workspace() {
-  local workspace=$1
-  local project_root=$(get_tupaia_project_root $(pwd))
+  workspace=$1
 
-  run "cd $project_root/packages/$workspace"
+  project_root=$(get_tupaia_project_root $(pwd))
+
 
   if [[ $2 == "" ]]; then
     return
