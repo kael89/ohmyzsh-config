@@ -1,10 +1,12 @@
 source "$ZSH/custom/utils.sh"
 
+alias dus="du -sh * | sort -h"
 alias gacd="gatsby clean && gatsby develop"
 alias gad="gatsby develop"
 alias inst="apt list --installed | grep"
 alias ls="ls -a"
 alias port="lsof -i -P -n | grep"
+alias rmf="rm -rf"
 alias src="source ~/.zshrc && source $ZSH_CUSTOM/*.zsh"
 
 function copy() {

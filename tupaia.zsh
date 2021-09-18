@@ -5,14 +5,14 @@ alias ctup2="cd $TUPAIA_ROOT/tupaia2"
 alias mgu="yarn migrate"
 alias mgd="yarn migrate-down"
 alias mgdu="yarn migrate-down && yarn migrate"
-alias tap="tup_workspace admin-panel"
-alias taps="tup_workspace admin-panel-server"
-alias tda="tup_workspace data-api"
-alias tes="tup_workspace entity-server"
-alias tms="tup_workspace meditrak-server"
-alias trs="tup_workspace report-server"
-alias twc="tup_workspace web-config-server"
-alias twf="tup_workspace web-frontend"
+alias tap="tup_wsp admin-panel"
+alias taps="tup_wsp admin-panel-server"
+alias tda="tup_wsp data-api"
+alias tes="tup_wsp entity-server"
+alias tms="tup_wsp meditrak-server"
+alias trs="tup_wsp report-server"
+alias twc="tup_wsp web-config-server"
+alias twf="tup_wsp web-frontend"
 
 # @param1: A path - can be a subpath of a tupaia project or not
 # @returns The root path for the specified tupaia project subpath.
@@ -24,7 +24,7 @@ alias twf="tup_workspace web-frontend"
 # $TUPAIA_ROOT/tupaia2 => $TUPAIA_ROOT/tupaia2
 # $TUPAIA_ROOT/tupaia2/a/sub/path => $TUPAIA_ROOT/tupaia2
 # /non/tupaia/path => $TUPAIA_ROOT/tupaia
-function get_tupaia_project_root() {
+function _get_tupaia_project_root() {
   local root_folder=$(echo $1 | sed -rn "s|.*$TUPAIA_ROOT/?([^/]*)/?.*|\1|p")
   if [[ $root_folder == "" ]]; then
     root_folder="tupaia"
@@ -33,9 +33,9 @@ function get_tupaia_project_root() {
   echo "$TUPAIA_ROOT/$root_folder"
 }
 
-function tup_workspace() {
+function tup_wsp() {
   local workspace=$1
-  local project_root=$(get_tupaia_project_root $(pwd))
+  local project_root=$(_get_tupaia_project_root $(pwd))
 
   run "cd $project_root/packages/$workspace"
 
@@ -53,20 +53,21 @@ function tup() {
   case $1 in
   rdb)
     shift
-    tup_rdb "$@"
+    _tup_rdb "$@"
     ;;
   ssh)
     shift
-    tup_ssh "$@"
+    _tup_ssh "$@"
     ;;
   start)
     shift
-    tup_start "$@"
+    _tup_start "$@"
     ;;
   *)
-    echo "Usage: tup <command> [<args>]
+    echo "Usage: tup <command> [args]
 
 Commands:
+  rdb     Dump and refresh the database
   ssh     SSH to an EC2 instance
   start   Start a full-stack app locally"
     return 1
@@ -74,12 +75,12 @@ Commands:
   esac
 }
 
-function tup_rdb() {
+function _tup_rdb() {
   yarn dump-database $MEDITRAK_SSH_KEY "$@"
   yarn refresh-database dump.sql
 }
 
-function tup_ssh() {
+function _tup_ssh() {
   local server=$1
   if [ "$server" = "" ]; then
     echo "Usage: tup ssh <server>"
@@ -91,7 +92,7 @@ function tup_ssh() {
   ssh -o StrictHostKeyChecking=no -i $MEDITRAK_SSH_KEY $host
 }
 
-function tup_start() {
+function _tup_start() {
   local app=$1
 
   case $1 in

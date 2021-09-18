@@ -1,5 +1,6 @@
 alias gc="git add . && git commit"
 alias gcm="gc -m"
+alias gf="git fetch --prune"
 alias gstash="git add . && git stash"
 alias gu="git fetch && git pull"
 
