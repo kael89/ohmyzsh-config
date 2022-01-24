@@ -89,7 +89,7 @@ function _tup_ssh() {
   fi
 
   sed -i.bak -e d ~/.ssh/known_hosts
-  local host=ubuntu@$server-ssh.tupaia.org
+  local host=ubuntu@$server.tupaia.org
   ssh -o StrictHostKeyChecking=no -i $MEDITRAK_SSH_KEY $host
 }
 
