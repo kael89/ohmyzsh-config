@@ -74,22 +74,12 @@ Options:
 }
 
 function wsp() {
-  local USAGE="Usage: wsp <workspace> [options...] [command] [args...]
+  local USAGE="Usage: wsp <workspace> [command] [args...]
 
 Unless if specified otherwise, the script will run the specified command
 with its args from the current directory.
 
-If no options and args are provided, then the script will cd in <workspace>.
-
-Options:
-  -s                Will cd in <workspace> and run \"start\". Ignores command and args
-  -sd               Will cd in <workspace> and run \"start-dev\". Ignores command and args
-  -h, --help        Show help
-
-Usage examples:
-  wsp meditrak-server
-  wsp meditrak-server -s
-  wsp meditrak-server test --coverage
+If no command is provided, then the script will cd in <workspace>.
 "
 
   local workspace="$1"
@@ -99,28 +89,10 @@ Usage examples:
     return 1
   fi
 
-  local project_path=""
-  if [[ $(pwd) =~ $JS_PROJECT_ROOT ]]; then
-    local project=$(command pwd | sed "s|$JS_PROJECT_ROOT/||" | sed 's|/.*||')
-    project_path="$JS_PROJECT_ROOT/$project"
-  elif [[ $(pwd) =~ $TUPAIA_ROOT ]]; then
-    local project=$(command pwd | sed "s|$TUPAIA_ROOT/||" | sed 's|/.*||')
-    project_path="$TUPAIA_ROOT/$project"
-  elif [[ $(pwd) =~ $TAMANU_ROOT ]]; then
-    local project=$(command pwd | sed "s|$TAMANU_ROOT/||" | sed 's|/.*||')
-    project_path="$TAMANU_ROOT/$project"
-  else
-    project_path="$TUPAIA_ROOT/tupaia/$project"
-  fi
-
   if [[ $2 == "" ]]; then
-    run "cd $project_path/packages/$workspace"
-  elif [[ $2 == "-s" ]]; then
-    run "(cd $project_path/packages/$workspace && yarn start)"
-  elif [[ $2 == "-sd" ]]; then
-    run "(cd $project_path/packages/$workspace && yarn start-dev)"
+    run "cd packages/$workspace"
   else
     shift
-    run "(cd $project_path/packages/$workspace && yarn $*)"
+    run "(cd packages/$workspace && yarn $*)"
   fi
 }

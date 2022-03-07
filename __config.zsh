@@ -3,6 +3,6 @@
 # oh-my-zsh seems to load files in `$ZSH_CUSTOM` alphabetically
 
 ATLASSIAN_ROOT="$HOME/projects/atlassian"
-JS_PROJECT_ROOT="$HOME/projects/javascript"
 MEDITRAK_SSH_KEY="$HOME/.ssh/keys/meditrak-server.pem"
+PROJECT_ROOT="$HOME/projects"
 TUPAIA_ROOT="$HOME/bes/Tupaia"
