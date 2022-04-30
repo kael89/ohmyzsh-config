@@ -1,6 +1,6 @@
 # ohmyzsh-config
 
-Shareable configuration for [oh-my-zsh](https://github.com/ohmyzsh/ohmyzsh)
+_Shareable configuration for [oh-my-zsh](https://github.com/ohmyzsh/ohmyzsh)_
 
 ## Setup
 
@@ -23,3 +23,9 @@ This repository includes references to zsh themes, installed as [git submodules]
 1. `cd` in each folder under `themes`
 2. `git fetch && git pull`
 3. `cd ..` and commit your changes
+
+## Overrides
+
+You can override the aliases and functions defined in this package by using a `zz_overrides.zsh` file. This is not committed in source control, so it's a good place to define custom functionality.
+
+> Why the `zz_` prefix? `oh-my-zsh` seems to load config files alphabetically, so using this prefix means that this file will by loaded last.
