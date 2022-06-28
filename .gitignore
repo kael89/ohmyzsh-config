@@ -1,4 +1,4 @@
 example.zsh
 plugins/example
 themes/example.zsh-theme
-zz_overrides.zsh
+zz_**.zsh

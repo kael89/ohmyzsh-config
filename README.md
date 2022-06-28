@@ -26,6 +26,6 @@ This repository includes references to zsh themes, installed as [git submodules]
 
 ## Overrides
 
-You can override the aliases and functions defined in this package by using a `zz_overrides.zsh` file. This is not committed in source control, so it's a good place to define custom functionality.
+You can override the aliases and functions defined in this package by using `zz_*.zsh` files. This is not committed in source control, so it's a good place to define custom functionality.
 
 > Why the `zz_` prefix? `oh-my-zsh` seems to load config files alphabetically, so using this prefix means that this file will by loaded last.
