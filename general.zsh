@@ -1,4 +1,4 @@
-source "$ZSH/custom/utils.sh"
+source "$ZSH_CUSTOM/utils.sh"
 
 alias dus="du -hs .* * --total 2> >(grep -v '^du: cannot access' >&2) | sort -h"
 alias gacd="gatsby clean && gatsby develop"
