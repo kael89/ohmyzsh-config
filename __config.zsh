@@ -3,5 +3,4 @@
 # oh-my-zsh seems to load files in `$ZSH_CUSTOM` alphabetically
 
 MEDITRAK_SSH_KEY="$HOME/.ssh/keys/meditrak-server.pem"
-PROJECT_ROOT="$HOME/projects"
-TUPAIA_ROOT="$HOME/bes/Tupaia"
+TUPAIA_ROOT="$HOME/projects/beyondessential/tupaia"
