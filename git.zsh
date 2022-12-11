@@ -4,6 +4,11 @@ alias gpl="git fetch && git prune && git prune remote origin && git pull"
 alias gstash="git add . && git stash"
 alias gu="git fetch && git pull"
 
+function gclone() {
+  local repo="$1"
+  git clone "$GIT_HOME_URL/$repo" "$PROJECT_ROOT_PERSONAL/$repo"
+}
+
 function gcou() {
   git fetch && git checkout "$1" && git pull
 }
