@@ -1,7 +1,7 @@
 source "$ZSH/custom/utils.sh"
 
-alias ctup="cd $TUPAIA_ROOT/tupaia"
-alias ctup2="cd $TUPAIA_ROOT/tupaia2"
+alias map="cd $TUPAIA_ROOT/packages/meditrak-app"
+
 alias mgu="yarn migrate"
 alias mgd="yarn migrate-down"
 alias mgdu="yarn migrate-down && yarn migrate"
@@ -63,6 +63,9 @@ function tup() {
   start)
     shift
     _tup_start "$@"
+    ;;
+  "")
+    cd "$TUPAIA_ROOT"
     ;;
   *)
     echo "Usage: tup <command> [args]
