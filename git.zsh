@@ -6,6 +6,12 @@ alias gu="git fetch && git pull"
 
 function gclone() {
   local repo="$1"
+
+  if [[ $PROJECT_ROOT_PERSONAL == "" ]]; then
+    log_error "Please set PROJECT_ROOT_PERSONAL"
+    return 1;
+  fi
+
   git clone "$GIT_HOME_URL/$repo" "$PROJECT_ROOT_PERSONAL/$repo"
 }
 

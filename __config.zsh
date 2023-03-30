@@ -4,5 +4,5 @@
 
 GIT_HOME_URL="git@github.com:kael89"
 MEDITRAK_SSH_KEY="$HOME/.ssh/keys/meditrak-server.pem"
-PERSONAL_PROJECT_ROOT="$HOME/projects/kael89"
+PROJECT_ROOT_PERSONAL="$HOME/projects/kael89"
 TUPAIA_ROOT="$HOME/projects/beyondessential/tupaia"

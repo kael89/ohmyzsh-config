@@ -11,9 +11,9 @@ function prj() {
     local package="$2"
 
     if [[ $package == "" ]]; then
-        run "cd $PERSONAL_PROJECT_ROOT/$project"
+        run "cd $PROJECT_ROOT_PERSONAL/$project"
     else
         shift
-        run "cd $PERSONAL_PROJECT_ROOT/$project/packages/$package"
+        run "cd $PROJECT_ROOT_PERSONAL/$project/packages/$package"
     fi
 }
