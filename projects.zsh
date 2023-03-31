@@ -1,14 +1,18 @@
 function prj() {
-    local USAGE="Usage: prj project [workspace]"
+    local USAGE="Usage: prj [project package]"
 
-    local project="$1"
-
-    if [[ "$project" = "" ]]; then
+    if [[ $1 == "-h" || $1 == "--help" ]]; then
         echo $USAGE
-        return 1
+        return
     fi
 
+    local project="$1"
     local package="$2"
+
+    if [[ "$project" = "" ]]; then
+        run "cd $PROJECT_ROOT_PERSONAL/$project"
+        return
+    fi
 
     if [[ $package == "" ]]; then
         run "cd $PROJECT_ROOT_PERSONAL/$project"
