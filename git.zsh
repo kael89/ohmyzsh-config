@@ -9,10 +9,14 @@ function gclone() {
 
   if [[ $PROJECT_ROOT_PERSONAL == "" ]]; then
     log_error "Please set PROJECT_ROOT_PERSONAL"
-    return 1;
+    return 1
   fi
 
   git clone "$GIT_HOME_URL/$repo" "$PROJECT_ROOT_PERSONAL/$repo"
+}
+
+function gcmn() {
+  gcm "$1" --no-verify
 }
 
 function gcou() {
