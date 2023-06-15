@@ -1,6 +1,7 @@
 alias gc="git add . && git commit"
 alias gcm="git add . && git commit -m"
 alias gpl="git fetch && git prune && git prune remote origin && git pull"
+alias grcn="grc --no-verify"
 alias gstash="git add . && git stash"
 alias gu="git fetch && git pull"
 
@@ -34,7 +35,7 @@ function grc() {
   local last_commit_message=$(git log -1 --pretty=%B)
 
   gre
-  gcm "$last_commit_message"
+  gcm "$last_commit_message" "$@"
 }
 
 function grho() {
