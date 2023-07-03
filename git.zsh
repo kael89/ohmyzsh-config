@@ -1,6 +1,6 @@
 alias gc="git add . && git commit"
 alias gcm="git add . && git commit -m"
-alias gpl="git fetch && git prune && git prune remote origin && git pull"
+alias gprune="git prune && git remote prune origin"
 alias grcn="grc --no-verify"
 alias gstash="git add . && git stash"
 alias gu="git fetch && git pull"
