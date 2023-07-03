@@ -32,10 +32,29 @@ function gre() {
 # As a result, current non committed changes will be added to the last commit
 # Warning: changes git history
 function grc() {
-  local last_commit_message=$(git log -1 --pretty=%B)
+  local n="$1"
 
-  gre
-  gcm "$last_commit_message" "$@"
+  if [[ $n == "" ]]; then
+    n=1
+  fi
+  if [[ n -le 0 ]]; then
+    log_error "grc <n>: Expected positive number of commits <n>, got ${n}"
+    return 1
+  fi
+
+  for ((i = 1; i <= $n; i++)); do
+    commit_messages[$i]=$(git log -1 --pretty=%B)
+    git reset HEAD~1 -q
+    git stash
+  done
+
+  echo "Array: $commit_messages"
+
+  for ((i = $n; i > 0; i--)); do
+    git stash pop -q
+    git add .
+    git commit -q -m "${commit_messages[$i]}"
+  done
 }
 
 function grho() {
