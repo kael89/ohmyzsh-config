@@ -10,14 +10,14 @@ function prj() {
     local package="$2"
 
     if [[ "$project" = "" ]]; then
-        run "cd $PROJECT_ROOT_PERSONAL/$project"
+        run "cd $PROJECT_ROOT_PERSONAL/$project" || return 1
         return
     fi
 
     if [[ $package == "" ]]; then
-        run "cd $PROJECT_ROOT_PERSONAL/$project"
+        run "cd $PROJECT_ROOT_PERSONAL/$project" || return 1
     else
         shift
-        run "cd $PROJECT_ROOT_PERSONAL/$project/packages/$package"
+        run "cd $PROJECT_ROOT_PERSONAL/$project/packages/$package" || return 1
     fi
 }

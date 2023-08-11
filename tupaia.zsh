@@ -38,15 +38,15 @@ function tup_wsp() {
   local workspace=$1
   local project_root=$(_get_tupaia_project_root $(pwd))
 
-  run "cd $project_root/packages/$workspace"
+  run "cd $project_root/packages/$workspace" || return 1
 
   if [[ $2 == "" ]]; then
     return
   elif [[ $2 == "-s" ]]; then
-    run "yarn start"
+    run "yarn start" || return 1
   else
     shift
-    run "yarn $*"
+    run "yarn $*" || return 1
   fi
 }
 

@@ -90,9 +90,9 @@ If no command is provided, then the script will cd in <workspace>.
   fi
 
   if [[ $2 == "" ]]; then
-    run "cd packages/$workspace"
+    run "cd packages/$workspace" || return 1
   else
     shift
-    run "(cd packages/$workspace && yarn $*)"
+    run "(cd packages/$workspace && yarn $*)" || return 1
   fi
 }
