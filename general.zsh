@@ -24,3 +24,8 @@ function lsg() {
 
   ls -a "$location" | grep -i "$search"
 }
+
+# Show swap memory stats
+function swap() {
+  sysctl vm.swapusage | awk '{printf "total = %.0fGB\n used = %.0fGB\n", $4 / 1024, $7 / 1024}'
+}
