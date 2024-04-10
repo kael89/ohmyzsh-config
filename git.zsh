@@ -57,11 +57,6 @@ function grc() {
   done
 }
 
-function grho() {
-  local branch=$(git branch --show-current)
-  git reset --hard origin/$branch
-}
-
 function gpo() {
   local branch=$(git branch --show-current)
   git push -u origin $branch
