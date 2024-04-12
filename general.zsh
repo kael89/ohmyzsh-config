@@ -7,7 +7,7 @@ alias inst="apt list --installed | grep"
 alias ls="ls -a"
 alias port="lsof -i -P -n | grep"
 alias rmf="rm -rf"
-alias src="source ~/.zshrc && source $ZSH_CUSTOM/*.zsh"
+alias src="exec zsh"
 
 function copy() {
   eval "$@" | clip.exe
@@ -28,4 +28,14 @@ function lsg() {
 # Show swap memory stats
 function swap() {
   sysctl vm.swapusage | awk '{printf "total = %.0fGB\n used = %.0fGB\n", $4 / 1024, $7 / 1024}'
+}
+
+function timezsh() {
+  local count=${1:-5}
+  # local count=$1
+  # if [[ $count == "" ]]; then
+  #   count=5
+  # fi
+
+  for i in $(seq 1 $count); do time $SHELL -i -c exit; done
 }
