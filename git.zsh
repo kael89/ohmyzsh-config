@@ -1,5 +1,6 @@
 alias gc="git add . && git commit"
 alias gcm="git add . && git commit -m"
+alias gfom="git fetch origin master --prune --prune-tags"
 alias gprune="git prune && git remote prune origin"
 alias grcn="grc --no-verify"
 alias grbm="git rebase origin/master"
