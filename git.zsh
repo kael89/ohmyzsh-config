@@ -26,6 +26,10 @@ function gcou() {
   git fetch && git checkout "$1" && git pull
 }
 
+function groc() {
+  git rebase origin $(git branch --show-current)
+}
+
 function gre() {
   git reset HEAD~$1
 }
@@ -60,6 +64,5 @@ function grc() {
 }
 
 function gpo() {
-  local branch=$(git branch --show-current)
-  git push -u origin $branch
+  git push -u origin $(git branch --show-current)
 }
