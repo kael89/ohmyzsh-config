@@ -1,7 +1,10 @@
 alias gc="git add . && git commit"
 alias gcm="git add . && git commit -m"
+alias gfoc="git fetch origin $(git branch --show-current)"
 alias gfom="git fetch origin master --prune --prune-tags"
+alias gpo="git push -u origin $(git branch --show-current)"
 alias gprune="git prune && git remote prune origin"
+alias groc="git rebase origin $(git branch --show-current)"
 alias grcn="grc --no-verify"
 alias grbm="git rebase origin/master"
 alias gstash="git add . && git stash"
@@ -24,10 +27,6 @@ function gcmn() {
 
 function gcou() {
   git fetch && git checkout "$1" && git pull
-}
-
-function groc() {
-  git rebase origin $(git branch --show-current)
 }
 
 function gre() {
@@ -61,8 +60,4 @@ function grc() {
     git add .
     git commit -q -m "${commit_messages[$i]}"
   done
-}
-
-function gpo() {
-  git push -u origin $(git branch --show-current)
 }
