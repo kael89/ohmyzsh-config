@@ -1,13 +1,10 @@
 source "$ZSH_CUSTOM/utils.sh"
 
-alias dus="du -hs .* * --total 2> >(grep -v '^du: cannot access' >&2) | sort -h"
-alias gacd="gatsby clean && gatsby develop"
-alias gad="gatsby develop"
-alias inst="apt list --installed | grep"
-alias ls="ls -a"
-alias port="lsof -i -P -n | grep"
-alias rmf="rm -rf"
-alias src="exec zsh"
+alias inst='apt list --installed | grep'
+alias ls='ls -a'
+alias port='lsof -i -P -n | grep'
+alias rmf='rm -rf'
+alias src='exec zsh'
 
 function copy() {
   eval "$@" | clip.exe

@@ -1,20 +1,5 @@
 source "$ZSH/custom/utils.sh"
 
-alias map="cd $TUPAIA_ROOT/packages/meditrak-app"
-
-alias mgu="yarn migrate"
-alias mgd="yarn migrate-down"
-alias mgdu="yarn migrate-down && yarn migrate"
-alias tap="wsp admin-panel"
-alias taps="wsp admin-panel-server"
-alias tda="wsp data-api"
-alias tdb="wsp database"
-alias tes="wsp entity-server"
-alias tms="wsp meditrak-server"
-alias trs="wsp report-server"
-alias twc="wsp web-config-server"
-alias twf="wsp web-frontend"
-
 # @param1: A path - can be a subpath of a tupaia project or not
 # @returns The root path for the specified tupaia project subpath.
 #   If the subpath is not under a tupaia project, defaults to "$TUPAIA_ROOT/tupaia"
