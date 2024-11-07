@@ -1,4 +1,3 @@
-alias gc='git add . && git commit'
 alias gcm='git add . && git commit -m'
 alias gfoc='git fetch origin $(git branch --show-current)'
 alias gfom='git fetch origin master --prune --prune-tags'
@@ -9,17 +8,6 @@ alias grcn='grc --no-verify'
 alias grbm='git rebase origin/master'
 alias gstash='git add . && git stash'
 alias gu='git fetch && git pull'
-
-function gclone() {
-  local repo="$1"
-
-  if [[ $PROJECT_ROOT_PERSONAL == "" ]]; then
-    log_error "Please set PROJECT_ROOT_PERSONAL"
-    return 1
-  fi
-
-  git clone "$GIT_HOME_URL/$repo" "$PROJECT_ROOT_PERSONAL/$repo"
-}
 
 function gcmn() {
   gcm "$1" --no-verify

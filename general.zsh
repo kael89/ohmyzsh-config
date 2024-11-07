@@ -1,14 +1,7 @@
-source "$ZSH_CUSTOM/utils.sh"
-
-alias inst='apt list --installed | grep'
 alias ls='ls -a'
 alias port='lsof -i -P -n | grep'
 alias rmf='rm -rf'
 alias src='exec zsh'
-
-function copy() {
-  eval "$@" | clip.exe
-}
 
 function lsg() {
   if [[ "$#" > 1 ]]; then
@@ -29,10 +22,6 @@ function swap() {
 
 function timezsh() {
   local count=${1:-5}
-  # local count=$1
-  # if [[ $count == "" ]]; then
-  #   count=5
-  # fi
 
   for i in $(seq 1 $count); do time $SHELL -i -c exit; done
 }
