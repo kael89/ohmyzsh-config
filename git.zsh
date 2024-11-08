@@ -5,7 +5,6 @@ alias gpo='git push -u origin $(git branch --show-current)'
 alias gprune='git prune && git remote prune origin'
 alias groc='git rebase origin $(git branch --show-current)'
 alias grcn='grc --no-verify'
-alias grbm='git rebase origin/master'
 alias gstash='git add . && git stash'
 alias gu='git fetch && git pull'
 
