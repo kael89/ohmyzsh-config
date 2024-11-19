@@ -1,6 +1,6 @@
 alias gcm='git add . && git commit -m'
 alias gfoc='git fetch origin $(git branch --show-current)'
-alias gfom='git fetch origin master --prune --prune-tags'
+alias gfom='git fetch origin $(git_main_branch)'
 alias gpo='git push -u origin $(git branch --show-current)'
 alias gprune='git prune && git remote prune origin'
 alias groc='git rebase origin $(git branch --show-current)'
