@@ -2,6 +2,7 @@ alias ls='ls -a'
 alias port='lsof -i -P -n | grep'
 alias rmf='rm -rf'
 alias src='exec zsh'
+alias hist='history'
 
 function lsg() {
   if [[ "$#" > 1 ]]; then
