@@ -1,4 +1,5 @@
 alias gcm='git add . && git commit -m'
+alias gcom='git checkout $(git_main_branch)'
 alias gfoc='git fetch origin $(git branch --show-current)'
 alias gfom='git fetch origin $(git_main_branch)'
 alias gpo='git push -u origin $(git branch --show-current)'
