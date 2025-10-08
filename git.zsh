@@ -9,8 +9,11 @@ alias grcn='grc --no-verify'
 alias gstash='git add . && git stash'
 alias gu='git fetch && git pull'
 
-function gcmn() {
-  gcm "$1" --no-verify
+# Commit with message from branch name, but open editor for review/edit
+function gcme() {
+  local msg="$(branch_to_commit)"
+  git add .
+  git commit --edit -m "$msg"
 }
 
 function gcou() {
@@ -48,4 +51,34 @@ function grc() {
     git add .
     git commit -q -m "${commit_messages[$i]}"
   done
+}
+
+# Generate commit message from branch name
+# Supported branch name format: <issue_key>/<description>
+function branch_to_commit() {
+  local branch_name=$(git branch --show-current)
+  local issue_key
+  local description
+
+  if [[ $branch_name != */* ]]; then
+    # If branch name does not contain a slash, treat it as description only
+    issue_key=""
+    description=$branch_name
+  else
+    # Split branch name using the first `/`
+    issue_key="${branch_name%%/*}"
+    description="${branch_name#*/}"
+  fi
+
+  # Replace hyphens with spaces
+  description="${description//-/ }"
+  # Capitalize first letter
+  description="${description[1]:u}${description[2,-1]}"
+
+  if [[ -z $issue_key ]]; then
+    echo "$description"
+    return
+  fi
+
+  echo "${issue_key} ${description}"
 }
