@@ -16,6 +16,16 @@ function gcme() {
   git commit --edit -m "$msg"
 }
 
+# Extract issue key from branch name and open commit view to edit message
+function gcmi() {
+  local branch_name=$(git branch --show-current)
+  # Extract everything until the first'"/'
+  local issue_key="${branch_name%%/*}"
+
+  git add .
+  git commit --edit -m "$issue_key"
+}
+
 function gcou() {
   git fetch && git checkout "$1" && git pull
 }
